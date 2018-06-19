@@ -3,6 +3,8 @@ extends Node
 export (PackedScene) var trunk_scene
 
 onready var first_trunk_position = $FirstTrunkPosition
+onready var grave = $Grave
+onready var time_left = $TimeLeft
 
 var last_spawn_position
 
@@ -14,6 +16,11 @@ var trunks_arry = []
 func _ready():
 	last_spawn_position = first_trunk_position.position
 	_spawn_empty_tree()
+
+func _process(delta):
+	time_left.value -= delta
+	if time_left.value <= 0:
+		die()
 	
 func _spawn_empty_tree():
 	for counter in range (5):
@@ -55,3 +62,6 @@ func _setup_spawn_variables():
 		else:
 			spawn_with_axe = false	
 			#spawn bare trunk
+
+func die():
+	print("should die now")

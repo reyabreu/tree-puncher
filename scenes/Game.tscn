@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Trunk.tscn" type="PackedScene" id=2]
 [ext_resource path="res://sprites/skybox_sideHills.png" type="Texture" id=3]
 [ext_resource path="res://sprites/dirt_grass.png" type="Texture" id=4]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://sprites/Grave.png" type="Texture" id=6]
 
 [node name="Game" type="Node" index="0"]
 
@@ -15,8 +16,12 @@ trunk_scene = ExtResource( 2 )
 
 position = Vector2( 224, 704 )
 scale = Vector2( 3.08684, 3.08684 )
+z_index = -10
 texture = ExtResource( 3 )
-_sections_unfolded = [ "Offset", "Transform" ]
+_sections_unfolded = [ "Offset", "Transform", "Z Index" ]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Ground" type="Node2D" parent="." index="1"]
 
@@ -50,5 +55,41 @@ position = Vector2( 540, 870 )
 
 position = Vector2( 360, 960 )
 _sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="Grave" type="Sprite" parent="." index="4"]
+
+visible = false
+position = Vector2( 540, 1000 )
+texture = ExtResource( 6 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="TimeLeft" type="ProgressBar" parent="." index="5"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 180.0
+margin_top = 96.0
+margin_right = 540.0
+margin_bottom = 160.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+min_value = 0.0
+max_value = 5.0
+step = 1.0
+page = 0.0
+value = 5.0
+exp_edit = false
+rounded = false
+percent_visible = false
+_sections_unfolded = [ "Percent", "Rect", "custom_fonts", "custom_styles" ]
+__meta__ = {
+"_edit_group_": true
+}
 
 
